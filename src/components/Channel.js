@@ -65,14 +65,23 @@ const Channel = ({ user = null, db = null, haveSelectedCourse, selectedCourseVal
           if (response.ok) {
             console.log('API request sent successfully');
             const responsePacket = await response.json();
-            const responseContent=responsePacket.response;
-            console.log('Response Content: ', responseContent);
+            console.log("new object", {responsePacket})
+            // const responseContent=responsePacket.content;
+            // console.log('Response Content: ', responseContent);
+
 
                 /*If there is a respond, it is a question, update to question database*/
+                if (responsePacket.filename !== null) {
 
-                if (responseContent !== null) {
+                    const url = 'http://128.199.141.40/' + responsePacket.filename
+                    const audio  = new Audio(url)
+                        
+                    audio.addEventListener('ended', () => audio.pause())
+                    audio.play()
+                }
+                if (responsePacket.content !== null) {
                     db.collection('questions').add({
-                    question: responseContent,
+                    question: responsePacket.content,
                     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                     uid,
                     displayName,
