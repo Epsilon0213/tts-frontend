@@ -19,7 +19,7 @@ const [isOn, setIsOn] = useState(false);
         setIsOn(false);
     }
     
-    const response = await fetch(process.env.REACT_APP_URL + '/music-player', {
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/music-player', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

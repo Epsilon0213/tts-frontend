@@ -8,7 +8,7 @@ const VoiceSelection = () => {
     setSelectedVoice(selectedValue);
 
     try {
-      const response = await fetch(process.env.REACT_APP_URL + '/voice-select', {
+      const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/voice-select', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

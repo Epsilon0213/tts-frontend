@@ -54,7 +54,7 @@ const QuestionList = ({ db = null, user = null, userRole, selectedCourseValue}) 
     const newMessage = "/talk " + message;
 
     //API Request
-    const response = await fetch(process.env.REACT_APP_URL + '/submit-message', {
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/submit-message', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
