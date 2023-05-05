@@ -73,9 +73,9 @@ const Channel = ({ user = null, db = null, haveSelectedCourse, selectedCourseVal
                 /*If there is a response, it is a question, update to question database*/
                 if (responsePacket.filename !== null) {
 
-                    const url = '${process.env.REACT_APP_STATIC_URL}/' + responsePacket.filename
+                    const url = `${process.env.REACT_APP_STATIC_URL}/${responsePacket.filename}`
                     const audio  = new Audio(url)
-                        
+                    
                     audio.addEventListener('ended', () => audio.pause())
                     audio.play()
                 }
