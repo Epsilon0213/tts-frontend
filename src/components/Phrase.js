@@ -3,7 +3,7 @@ import React from 'react';
 const Phrase = ({effect: phrase = null, children = null}) => {
 
   const handlePhraseClick = async () => {
-    const response = await fetch(process.env.REACT_APP_URL + '/submit-message', {
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/submit-message', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const Phrase = ({effect: phrase = null, children = null}) => {
           /*If there is a response, it is a question, update to question database*/
           if (responsePacket.filename !== null) {
 
-              const url = '${process.env.REACT_APP_URL}/sounds/phrases/' + responsePacket.filename[1][4]
+              const url = '${process.env.REACT_APP_STATIC_URL}/sounds/phrases/' + responsePacket.filename[1][4]
               const audio  = new Audio(url)
                   
               audio.addEventListener('ended', () => audio.pause())

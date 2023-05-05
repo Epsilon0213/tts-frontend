@@ -52,7 +52,7 @@ const Channel = ({ user = null, db = null, haveSelectedCourse, selectedCourseVal
         setNewMessage('');
 
         //API Request
-        const response = await fetch(process.env.REACT_APP_URL + '/submit-message', {
+        const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/submit-message', {
             method: 'POST',
             headers: {
               'Content-Type':'application/json',
@@ -73,7 +73,7 @@ const Channel = ({ user = null, db = null, haveSelectedCourse, selectedCourseVal
                 /*If there is a response, it is a question, update to question database*/
                 if (responsePacket.filename !== null) {
 
-                    const url = '${process.env.REACT_APP_URL}/' + responsePacket.filename
+                    const url = '${process.env.REACT_APP_STATIC_URL}/' + responsePacket.filename
                     const audio  = new Audio(url)
                         
                     audio.addEventListener('ended', () => audio.pause())

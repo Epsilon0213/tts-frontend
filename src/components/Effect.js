@@ -4,7 +4,7 @@ const Effect = ({effect = null, children = null}) => {
 
   const handleEffectClick = async () => {
     // Sends API
-    const response = await fetch(process.env.REACT_APP_URL + '/submit-message', {
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/submit-message', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ const Effect = ({effect = null, children = null}) => {
           /*If there is a response, it is a question, update to question database*/
           if (responsePacket.filename !== null) {
 
-              const url = '${process.env.REACT_APP_URL}/sounds/effects/' + responsePacket.filename[1][4]
+              const url = '${process.env.REACT_APP_STATIC_URL}/sounds/effects/' + responsePacket.filename[1][4]
               const audio  = new Audio(url)
                   
               audio.addEventListener('ended', () => audio.pause())
