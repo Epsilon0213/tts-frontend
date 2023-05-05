@@ -24,7 +24,7 @@ const Phrase = ({effect: phrase = null, children = null}) => {
           /*If there is a response, it is a question, update to question database*/
           if (responsePacket.filename !== null) {
 
-              const url = '${process.env.REACT_APP_API_URL}/' + responsePacket.filename
+              const url = '${process.env.REACT_APP_URL}/sounds/phrases/' + responsePacket.filename[1][4]
               const audio  = new Audio(url)
                   
               audio.addEventListener('ended', () => audio.pause())
