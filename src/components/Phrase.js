@@ -15,6 +15,21 @@ const Phrase = ({effect: phrase = null, children = null}) => {
     });
     if (response.ok) {
       console.log(`"${phrase}" effect triggered successfully`);
+      const responsePacket = await response.json();
+      console.log("new object", {responsePacket})
+      // const responseContent=responsePacket.content;
+      // console.log('Response Content: ', responseContent);
+
+
+          /*If there is a response, it is a question, update to question database*/
+          if (responsePacket.filename !== null) {
+
+              const url = '${process.env.REACT_APP_API_URL}/' + responsePacket.filename
+              const audio  = new Audio(url)
+                  
+              audio.addEventListener('ended', () => audio.pause())
+              audio.play()
+          }
     } else {
       console.error(`Failed to trigger "${phrase}" effect`);
     }
