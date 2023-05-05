@@ -8,7 +8,7 @@ const TTSModelSelection = () => {
     setSelectedModel(selectedValue);
 
     try {
-      const response = await fetch(process.env.REACT_APP_URL + '/model-select', {
+      const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/model-select', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
